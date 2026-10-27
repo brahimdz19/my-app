@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق ذاكِـر بكالوريا | رفيقك الذكي لمراجعة التاريخ</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .glow-indigo {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+        .glow-emerald {
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen overflow-x-hidden relative selection:bg-indigo-500 selection:text-white">
+
+    <!-- إضاءة خلفية -->
+    <div class="fixed top-[-150px] right-[-150px] w-[500px] h-[500px] glow-indigo rounded-full blur-3xl pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-150px] left-[-150px] w-[500px] h-[500px] glow-emerald rounded-full blur-3xl pointer-events-none z-0"></div>
+
+    <!-- شريط التنقل العلوي -->
+    <nav class="fixed top-0 inset-x-0 z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-graduation-cap text-xl text-white"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl font-black text-white">ذاكِـر</span>
+                        <span class="text-[11px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2.5 py-0.5 rounded-full font-bold">بكالوريا 2027</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 hidden sm:block">تطبيق البطاقات الذكية لمادة التاريخ</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                <a href="#features" class="hover:text-indigo-400 transition">المميزات</a>
+                <a href="#units" class="hover:text-indigo-400 transition">محتوى الوحدات</a>
+                <a href="#download" class="hover:text-indigo-400 transition">طريقة التثبيت</a>
+            </div>
+
+            <!-- زر التحميل العلوي -->
+            <a href="https://www.mediafire.com/file/6pawum4igcipnu2/app-release.apk/file" target="_blank" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                <i class="fa-brands fa-android text-lg"></i>
+                <span>تحميل التطبيق</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-6 max-w-6xl mx-auto z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 text-center lg:text-right space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>متوفر الآن مجاناً لطلبة البكالوريا في الجزائر 🇩🇿</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+                    احفظ تواريخ، مصطلحات، وشخصيات <span class="text-transparent bg-clip-text bg-gradient-to-l from-indigo-400 via-purple-400 to-emerald-400">البكالوريا</span> بذكاء!
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    ودّع طرق الحفظ التقليدية المملة! تطبيق <strong class="text-white">ذاكِـر</strong> يعتمد على البطاقات التفاعلية ثلاثية الأبعاد، التكرار الذكي، ووضع الاختبار السريع (Quiz) لترسيخ التواريخ والمصطلحات والشخصيات في ذاكرتك طويلة المدى بدون إنترنت.
+                </p>
+
+                <!-- أزرار التحميل الرئيسية -->
+                <div id="download" class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="https://www.mediafire.com/file/6pawum4igcipnu2/app-release.apk/file" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-4 bg-gradient-to-l from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-indigo-600/30 transition transform hover:-translate-y-0.5 active:scale-95">
+                        <i class="fa-solid fa-download text-2xl"></i>
+                        <div class="text-right">
+                            <div class="text-xs font-normal text-indigo-200">تحميل مباشر من MediaFire</div>
+                            <div>تنزيل النسخة الكاملة (APK)</div>
+                        </div>
+                    </a>
+
+                    <a href="#features" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-4 rounded-2xl glass-card text-slate-200 hover:text-white hover:border-indigo-500/50 font-bold text-base transition">
+                        <i class="fa-solid fa-circle-play text-indigo-400"></i>
+                        <span>استكشف المميزات</span>
+                    </a>
+                </div>
+
+                <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-semibold">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> يعمل بدون إنترنت 100%</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-indigo-400"></i> آمن وخفيف على الهاتف</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-code-branch text-purple-400"></i> الإصدار v2.0 (شامل الوحدات 3)</span>
+                </div>
+            </div>
+
+            <!-- مجسم الهاتف التفاعلي -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="w-[310px] sm:w-[340px] bg-slate-900 border-[6px] border-slate-800 rounded-[44px] p-4 shadow-2xl shadow-indigo-950/60 relative animate-float">
+                    <div class="w-24 h-5 bg-slate-950 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div class="w-2.5 h-2.5 rounded-full bg-slate-800"></div>
+                    </div>
+
+                    <div class="bg-slate-950 rounded-[32px] p-4 border border-slate-800/80 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-xs font-bold">🎓</div>
+                                <div>
+                                    <div class="text-xs font-black text-white">ذاكِـر <span class="text-[9px] text-amber-400">🔥 5 أيام</span></div>
+                                    <div class="text-[9px] text-slate-400">جرب النقر على البطاقة أدناه 👇</div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">إتقان 85%</span>
+                        </div>
+
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-emerald-500 h-full w-[85%] rounded-full"></div>
+                        </div>
+
+                        <!-- بطاقة ثلاثية الأبعاد حية للتجربة -->
+                        <div class="perspective-1000 cursor-pointer" onclick="flipDemoCard()">
+                            <div id="demoCardInner" class="relative w-full h-56 rounded-2xl transform-style-3d transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 border border-indigo-500/40 rounded-2xl p-4 flex flex-col justify-between backface-hidden shadow-lg">
+                                    <div class="flex justify-between items-center text-[10px]">
+                                        <span class="bg-indigo-500/20 text-indigo-300 px-2.5 py-0.5 rounded-full font-bold">تاريخ مهم • الوحدة 2</span>
+                                        <span class="text-slate-400 font-mono">1 / 42</span>
+                                    </div>
+                                    <div class="text-center my-auto">
+                                        <div class="text-2xl font-black text-white">01 نوفمبر 1954</div>
+                                    </div>
+                                    <div class="text-center text-[10px] text-indigo-300 flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-hand-pointer animate-bounce"></i>
+                                        <span>انقر هنا لتجربة قلب البطاقة 3D</span>
+                                    </div>
+                                </div>
+
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-950 to-slate-950 border border-emerald-500/50 rounded-2xl p-4 flex flex-col justify-between backface-hidden rotate-y-180 shadow-lg">
+                                    <div class="flex justify-between items-center text-[10px]">
+                                        <span class="bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full font-bold">الإجابة والشرح</span>
+                                        <span class="text-emerald-400 font-bold">✅ محفوظة</span>
+                                    </div>
+                                    <div class="text-center my-auto">
+                                        <div class="text-base font-bold text-white leading-relaxed">
+                                            اندلاع الثورة التحريرية الجزائرية المباركة ضد الاستعمار الفرنسي
+                                        </div>
+                                    </div>
+                                    <div class="text-center text-[10px] text-emerald-400">
+                                        انقر للعودة للسؤال
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 pt-1">
+                            <div onclick="flipDemoCard()" class="cursor-pointer py-2 rounded-xl bg-slate-900 border border-amber-500/40 text-amber-300 text-[11px] font-bold text-center">
+                                ⏳ أحتاج مراجعتها
+                            </div>
+                            <div onclick="flipDemoCard()" class="cursor-pointer py-2 rounded-xl bg-emerald-600 text-white text-[11px] font-bold text-center">
+                                ✅ حفظتها بنجاح
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- شريط الإحصائيات -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <div class="text-3xl font-black text-indigo-400">+100</div>
+                <div class="text-xs text-slate-400 mt-1 font-semibold">بطاقة جاهزة ومصنفة</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-emerald-400">3 أقسام</div>
+                <div class="text-xs text-slate-400 mt-1 font-semibold">تواريخ • مصطلحات • شخصيات</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-amber-400">Quiz تفاعلي</div>
+                <div class="text-xs text-slate-400 mt-1 font-semibold">اختبار سريع بمؤقت زمني</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-purple-400">100%</div>
+                <div class="text-xs text-slate-400 mt-1 font-semibold">مجاني وبدون إعلانات مزعجة</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section id="features" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 z-10 relative">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl font-black text-white mb-3">لماذا تطبيق <span class="text-indigo-400">ذاكِـر</span> هو الأفضل للبكالوريا؟</h2>
+            <p class="text-sm text-slate-400">صُمم خصيصاً ليجمع لك كل ما تحتاجه في مادة التاريخ بطريقة ذكية تختصر عليك ساعات الحفظ.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="glass-card p-6 rounded-3xl hover:border-indigo-500/60 transition">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">شامل للأقسام والوحدات الثلاث</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    مقسم بدقة إلى (التواريخ، المصطلحات، والشخصيات التاريخية) مع إمكانية التصفية حسب الوحدة الأولى (الحرب الباردة)، الثانية (الثورة الجزائرية)، أو الثالثة.
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl hover:border-emerald-500/60 transition">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">نظام التكرار الذكي (Spaced Repetition)</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    يركز التطبيق تلقائياً على البطاقات التي تجد صعوبة في حفظها ويعرضها لك في المقدمة حتى تتقنها تماماً بنسبة 100%.
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl hover:border-amber-500/60 transition">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-stopwatch"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">وضع تحدي البكالوريا (Quiz Mode)</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    اختبر سرعة بديهتك من خلال اختبارات من 4 خيارات مع مؤقت تنازلي (20 ثانية لكل سؤال) وحاول كسر رقمك القياسي يومياً!
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl hover:border-purple-500/60 transition">
+                <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">بحث فوري فائق السرعة</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    ابحث عن أي سنة أو مصطلح أو قائد تاريخي بضغطة زر ليظهر لك تعريفه الكامل مباشرة دون عناء البحث في الكراريس.
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl hover:border-pink-500/60 transition">
+                <div class="w-12 h-12 rounded-2xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-folder-plus"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">إضافة ومشاركة البطاقات</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    أضف بطاقاتك وملخصاتك الخاصة بسهولة، وشاركها مع زملائك في القسم عبر ميزة التصدير والاستيراد (JSON Backup).
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl hover:border-cyan-500/60 transition">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">حماس مستمر (Study Streak)</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    يتتبع التطبيق عدد أيام مراجعتك المتتالية ويحتفل بك عند إتمام 100% من كل قسم مع اهتزازات تفاعلية (Haptic Feedback).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الوحدات -->
+    <section id="units" class="max-w-6xl mx-auto px-4 sm:px-6 py-12 z-10 relative">
+        <div class="glass-card rounded-3xl p-8 border border-slate-800">
+            <h2 class="text-2xl font-black text-white mb-6 text-center">محتوى متوافق 100% مع التدرج الوزاري للبكالوريا</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                    <span class="text-xs font-bold text-indigo-400">الوحدة التعليمية الأولى</span>
+                    <h4 class="font-bold text-white mt-1 mb-2">تطور العالم في ظل الثنائية القطبية (1945 - 1989)</h4>
+                    <p class="text-xs text-slate-400">جميع تواريخ الحرب الباردة، الأحلاف العسكرية، المشاريع الاقتصادية، وشخصيات المعسكرين الشرقي والغربي.</p>
+                </div>
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                    <span class="text-xs font-bold text-emerald-400">الوحدة التعليمية الثانية</span>
+                    <h4 class="font-bold text-white mt-1 mb-2">الجزائر ما بين 1945 - 1989 (الثورة التحريرية)</h4>
+                    <p class="text-xs text-slate-400">محطات الثورة التحريرية الكبرى، مؤتمر الصومام، الحكومة المؤقتة، قادة الثورة، والمخططات الاستعمارية.</p>
+                </div>
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                    <span class="text-xs font-bold text-amber-400">الوحدة التعليمية الثالثة</span>
+                    <h4 class="font-bold text-white mt-1 mb-2">العالم الثالث بين تراجع الاستعمار وحركات التحرر</h4>
+                    <p class="text-xs text-slate-400">مؤتمر باندونغ، تأسيس حركة عدم الانحياز، التضامن الأفرو-آسيوي، وأبرز زعماء حركات التحرر.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- صندوق التحميل النهائي -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16 z-10 relative text-center">
+        <div class="bg-gradient-to-br from-indigo-900/60 via-slate-900 to-emerald-900/40 border border-indigo-500/40 rounded-3xl p-8 sm:p-12 shadow-2xl">
+            <h2 class="text-2xl sm:text-3xl font-black text-white mb-4">جاهز لضمان العلامة الكاملة في التاريخ؟</h2>
+            <p class="text-sm text-slate-300 mb-8 max-w-lg mx-auto">
+                حمّل تطبيق <strong>ذاكِـر بكالوريا</strong> الآن عبر ميديافاير وابدأ المراجعة الذكية في أي وقت ومكان.
+            </p>
+            <a href="https://www.mediafire.com/file/6pawum4igcipnu2/app-release.apk/file" target="_blank" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-lg px-8 py-4 rounded-2xl shadow-lg shadow-emerald-600/30 transition transform active:scale-95">
+                <i class="fa-brands fa-android text-2xl"></i>
+                <span>تحميل التطبيق من MediaFire (APK)</span>
+            </a>
+            <p class="text-[11px] text-slate-400 mt-4">
+                💡 ملاحظة: عند التثبيت لأول مرة، وافق على خيار "التثبيت من مصادر غير معروفة" في هاتفك لأن التطبيق مرفوع بشكل مباشر.
+            </p>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 z-10 relative">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© 2026 تطبيق <strong>ذاكِـر بكالوريا</strong> • جميع الحقوق محفوظة</p>
+            <p>صُنع بكل حب لدعم طلبة البكالوريا في الجزائر 🎓🇩🇿</p>
+        </div>
+    </footer>
+
+    <script>
+        let demoFlipped = false;
+        function flipDemoCard() {
+            const card = document.getElementById('demoCardInner');
+            demoFlipped = !demoFlipped;
+            card.style.transform = demoFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+        }
+    </script>
+</body>
+</html>
